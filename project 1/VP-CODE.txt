@@ -1,0 +1,33 @@
+#include <iostream>
+
+// Global variables
+int globalVariable = 10;
+
+void function1() {
+  // Local variable
+  int localVariable = 20;
+  std::cout << "Inside function1:" << std::endl;
+  std::cout << "Global variable: " << globalVariable << std::endl;
+  std::cout << "Local variable: " << localVariable << std::endl;
+}
+
+void function2() {
+  // Local variable with same name as global variable
+  int globalVariable = 30;
+  std::cout << "Inside function2:" << std::endl;
+  std::cout << "Global variable: " << ::globalVariable << std::endl; // Accessing global variable using scope resolution operator
+  std::cout << "Local variable: " << globalVariable << std::endl;
+}
+
+int main() {
+  std::cout << "Inside main:" << std::endl;
+  std::cout << "Global variable: " << globalVariable << std::endl;
+
+  function1();
+  function2();
+
+  // Trying to access local variable outside its scope
+  // std::cout << localVariable << std::endl; // This will cause a compilation error
+
+  return 0;
+}
